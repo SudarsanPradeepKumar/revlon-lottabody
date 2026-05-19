@@ -68,6 +68,33 @@ function bindEvents(block) {
   });
 }
 
+function isVideoUrl(url) {
+  return url && (url.includes('youtube.com') || url.includes('youtu.be') || url.includes('vimeo.com'));
+}
+
+function getYouTubeEmbedUrl(url) {
+  const match = url.match(/(?:youtube\.com\/(?:embed\/|watch\?v=)|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+  if (match) return `https://www.youtube.com/embed/${match[1]}?autoplay=1`;
+  return url;
+}
+
+function openVideoModal(url) {
+  const overlay = document.createElement('div');
+  overlay.classList.add('carousel-hero-video-modal');
+  overlay.innerHTML = `
+    <div class="carousel-hero-video-modal-content">
+      <button class="carousel-hero-video-modal-close" aria-label="Close video">&times;</button>
+      <iframe src="${getYouTubeEmbedUrl(url)}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  `;
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay || e.target.classList.contains('carousel-hero-video-modal-close')) {
+      overlay.remove();
+    }
+  });
+  document.body.append(overlay);
+}
+
 function createSlide(row, slideIndex, carouselId) {
   const slide = document.createElement('li');
   slide.dataset.slideIndex = slideIndex;
@@ -78,13 +105,23 @@ function createSlide(row, slideIndex, carouselId) {
   const imageCol = columns[0];
   const linkCol = columns[1];
 
-  // Read link URL from column 2 and wrap the image to make entire slide clickable
   const linkEl = linkCol ? linkCol.querySelector('a') : null;
   const picture = imageCol ? imageCol.querySelector('picture') : null;
+  const href = linkEl ? linkEl.href : null;
 
-  if (picture && linkEl) {
+  if (picture && href && isVideoUrl(href)) {
     const wrapper = document.createElement('a');
-    wrapper.href = linkEl.href;
+    wrapper.href = href;
+    wrapper.classList.add('carousel-hero-slide-link', 'carousel-hero-video');
+    wrapper.append(picture);
+    wrapper.addEventListener('click', (e) => {
+      e.preventDefault();
+      openVideoModal(href);
+    });
+    slide.append(wrapper);
+  } else if (picture && href) {
+    const wrapper = document.createElement('a');
+    wrapper.href = href;
     wrapper.classList.add('carousel-hero-slide-link');
     wrapper.append(picture);
     slide.append(wrapper);
