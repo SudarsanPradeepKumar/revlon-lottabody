@@ -1,0 +1,39 @@
+{
+  "variantName": "columns-product",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-05-19T21:12:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://lottabody.com/coconut-and-shea-oils/24hr-edge-gel/",
+    "originPage": "product detail page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "product-hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + 2 CTAs | heading + paragraph",
+    "buttonCount": 2,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "product detail pages with product image and CTA buttons",
+      "product showcase layouts with image on left and text on right",
+      "pages with a primary product image and purchase/action buttons"
+    ],
+    "notSuitableFor": [
+      "text-only side-by-side layouts",
+      "multi-image galleries",
+      "content comparison layouts"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/coconut-and-shea-oils/24hr-edge-gel/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T21:12:00.000Z"
+  }
+}

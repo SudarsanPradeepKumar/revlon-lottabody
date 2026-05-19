@@ -1,0 +1,118 @@
+/* Block: columns-product */
+
+/* Mobile-first base styles */
+.columns-product {
+  color: var(--text-color);
+}
+
+.columns-product > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 0;
+}
+
+.columns-product > div > div {
+  order: 1;
+}
+
+.columns-product > div > .columns-product-img-col {
+  order: 0;
+  text-align: center;
+}
+
+/* Product image */
+.columns-product img {
+  max-width: 100%;
+  height: auto;
+}
+
+.columns-product > div > .columns-product-img-col img {
+  display: block;
+  margin: 0 auto;
+  max-width: 246px;
+}
+
+/* Links/Buttons in the image column */
+.columns-product > div > .columns-product-img-col p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.columns-product > div > .columns-product-img-col a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  padding: 6px 20px;
+  border: 1px solid #d5a6cc;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: var(--body-font-family);
+  color: var(--text-color);
+  text-decoration: none;
+  background-color: transparent;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.columns-product > div > .columns-product-img-col a:hover {
+  background-color: var(--text-color);
+  border-color: var(--text-color);
+  color: #fff;
+}
+
+/* Amazon icon inside button */
+.columns-product > div > .columns-product-img-col a picture {
+  display: inline-flex;
+  margin-left: 6px;
+}
+
+.columns-product > div > .columns-product-img-col a picture img {
+  width: 24px;
+  max-width: 24px;
+  height: 24px;
+}
+
+/* Text column (description) */
+.columns-product > div > div:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.columns-product > div > div:last-child p {
+  font-size: 14px;
+  font-family: var(--body-font-family);
+  line-height: 23.8px;
+  color: var(--text-color);
+  margin: 7px 0;
+}
+
+/* Desktop layout */
+@media (width >= 900px) {
+  .columns-product > div {
+    flex-direction: row;
+    align-items: center;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .columns-product > div > .columns-product-img-col {
+    flex: 0 0 25%;
+    order: unset;
+  }
+
+  .columns-product > div > div:last-child {
+    flex: 0 0 75%;
+    order: unset;
+    padding-left: 30px;
+  }
+
+  .columns-product > div > div:last-child p {
+    font-size: 14px;
+    line-height: 23.8px;
+  }
+}

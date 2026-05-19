@@ -1,0 +1,129 @@
+{
+  "metadata": {
+    "projectType": "doc"
+  },
+  "templates": [
+    {
+      "name": "product-detail",
+      "urls": [
+        "https://lottabody.com/coconut-and-shea-oils/24hr-edge-gel/",
+        "https://lottabody.com/coconut-and-shea-oils/love-me-5-n-1-leave-in-treatment/",
+        "https://lottabody.com/coconut-and-shea-oils/moisturize-me-curl-and-style-milk/",
+        "https://lottabody.com/coconut-and-shea-oils/sleek-me-blowout-lotion/",
+        "https://lottabody.com/coconut-and-shea-oils/style-me-texturizing-setting-lotion/",
+        "https://lottabody.com/coconut-and-shea-oils/wrap-me-foaming-mousse/",
+        "https://lottabody.com/coconut-and-shea-oils/control-me-edge-gel/",
+        "https://lottabody.com/milk-and-honey/refine-me-curl-defining-mousse/"
+      ],
+      "description": "Product detail page with breadcrumb, product hero image, description, benefits list, directions, and model image",
+      "blocks": [
+        {
+          "name": "columns-product",
+          "instances": [
+            ".et_pb_section_1 .et_pb_column_1_4, .et_pb_section_1 .et_pb_row_inner_0"
+          ]
+        },
+        {
+          "name": "columns-details",
+          "instances": [
+            ".et_pb_row_inner_1"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Product Content",
+          "selector": ".et_pb_section_0, .et_pb_section_1",
+          "style": "light-blue-textured",
+          "blocks": [
+            "columns-product",
+            "columns-details"
+          ],
+          "defaultContent": [
+            "#breadcrumbs"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "study-material",
+      "urls": [
+        "https://lottabody.com/study-material/lottabody-hydrate-shampoo-conditioner/",
+        "https://lottabody.com/study-material/lottabody-twist-curl-styling-pudding-coconut-shea-hair-shrinking-braids/",
+        "https://lottabody.com/study-material/deep-conditioning-natural-hair-shea-coconut/",
+        "https://lottabody.com/study-material/lottabody-illuminate-me-shine-mist/",
+        "https://lottabody.com/study-material/lottabody-fortify-strengthening-leave-conditioner/",
+        "https://lottabody.com/study-material/lottabody-activate-curl-activator/",
+        "https://lottabody.com/study-material/lottabody-milk-honey-natural-hair/",
+        "https://lottabody.com/study-material/lottabody-control-edge-gel-black/"
+      ],
+      "description": "Study material page with sequential product cards and back/next navigation",
+      "blocks": []
+    },
+    {
+      "name": "where-to-buy",
+      "urls": [
+        "https://lottabody.com/where-to-buy/"
+      ],
+      "description": "Store locator page with retailer logo grid and purchase links",
+      "blocks": []
+    },
+    {
+      "name": "contact",
+      "urls": [
+        "https://lottabody.com/contact/"
+      ],
+      "description": "Contact page with phone info and multi-field contact form",
+      "blocks": []
+    },
+    {
+      "name": "professional-products",
+      "urls": [
+        "https://lottabody.com/professionals/"
+      ],
+      "description": "Professional products page with single product hero, benefits, and usage directions",
+      "blocks": []
+    },
+    {
+      "name": "style-gallery",
+      "urls": [
+        "https://lottabody.com/style-gallery/",
+        "https://lottabody.com/alotta-gallery/"
+      ],
+      "description": "Style gallery page with image grid and Instagram social feed embed",
+      "blocks": []
+    },
+    {
+      "name": "legal-utility",
+      "urls": [
+        "https://lottabody.com/privacy/",
+        "https://lottabody.com/terms/",
+        "https://lottabody.com/exercise-your-privacy-rights/",
+        "https://lottabody.com/sitemap/",
+        "https://lottabody.com/thanks-for-registering/",
+        "https://lottabody.com/lottaselfie-terms/",
+        "https://lottabody.com/lottabody-control-24hr-edge-gel/"
+      ],
+      "description": "Legal and utility pages with long-form text content",
+      "blocks": []
+    },
+    {
+      "name": "homepage",
+      "urls": [
+        "https://lottabody.com/"
+      ],
+      "description": "Homepage with video hero, product line showcases, and email signup form",
+      "blocks": []
+    },
+    {
+      "name": "product-line-landing",
+      "urls": [
+        "https://lottabody.com/coconut-and-shea-oils/",
+        "https://lottabody.com/milk-and-honey/"
+      ],
+      "description": "Product line landing page with hero banner and product card grid",
+      "blocks": []
+    }
+  ]
+}

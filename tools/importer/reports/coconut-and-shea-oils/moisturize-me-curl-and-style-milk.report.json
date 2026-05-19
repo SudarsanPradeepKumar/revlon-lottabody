@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://lottabody.com/coconut-and-shea-oils/moisturize-me-curl-and-style-milk/",
+  "path": "coconut-and-shea-oils/moisturize-me-curl-and-style-milk",
+  "timestamp": "2026-05-19T21:26:42.916Z",
+  "title": "Moisturize Me Curl & Style Milk - Lottabody",
+  "template": "product-detail",
+  "blocks": [
+    "columns-product",
+    "columns-product",
+    "columns-details"
+  ]
+}

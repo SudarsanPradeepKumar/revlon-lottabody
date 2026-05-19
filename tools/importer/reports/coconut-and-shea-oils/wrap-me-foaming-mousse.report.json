@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://lottabody.com/coconut-and-shea-oils/wrap-me-foaming-mousse/",
+  "path": "coconut-and-shea-oils/wrap-me-foaming-mousse",
+  "timestamp": "2026-05-19T21:27:03.382Z",
+  "title": "Wrap Me Foaming Mousse - Lottabody",
+  "template": "product-detail",
+  "blocks": [
+    "columns-product",
+    "columns-product",
+    "columns-details"
+  ]
+}

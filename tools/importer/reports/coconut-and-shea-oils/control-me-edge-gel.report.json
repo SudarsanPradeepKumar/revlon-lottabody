@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://lottabody.com/coconut-and-shea-oils/control-me-edge-gel/",
+  "path": "coconut-and-shea-oils/control-me-edge-gel",
+  "timestamp": "2026-05-19T21:27:11.969Z",
+  "title": "Control Me Edge Gel - Lottabody",
+  "template": "product-detail",
+  "blocks": [
+    "columns-product",
+    "columns-product",
+    "columns-details"
+  ]
+}
