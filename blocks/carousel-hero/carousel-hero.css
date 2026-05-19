@@ -17,6 +17,15 @@
   width: 100vw;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
+  position: relative;
+}
+
+.carousel-hero > nav {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  z-index: 2;
 }
 
 .carousel-hero .carousel-hero-slides-container {
