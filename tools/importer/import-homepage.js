@@ -136,23 +136,57 @@ export default {
     // 3. Execute afterTransform transformers
     executeTransformers('afterTransform', main, payload);
 
-    // 4. Create section metadata for styled sections
-    PAGE_TEMPLATE.sections.forEach((section) => {
-      if (section.style) {
-        const sectionEl = document.querySelector(section.selector);
-        if (sectionEl) {
-          const cells = [
-            ['Section Metadata'],
-            ['style', section.style],
-          ];
-          const table = WebImporter.DOMUtils.createTable(cells, document);
-          sectionEl.append(table);
-          // Add section break
-          const hr = document.createElement('hr');
-          sectionEl.after(hr);
-        }
-      }
+    // 4. Add section breaks between major page sections
+    // Find all block tables that were created by parsers
+    const blockTables = main.querySelectorAll('table');
+    const carouselTable = [...blockTables].find((t) => {
+      const firstCell = t.querySelector('tr:first-child td');
+      return firstCell && firstCell.textContent.includes('carousel-hero');
     });
+
+    // Insert section break after the carousel hero block
+    if (carouselTable) {
+      const hr = document.createElement('hr');
+      carouselTable.after(hr);
+    }
+
+    // Insert section metadata + breaks for Milk & Honey, Coconut & Shea, and Mailing List
+    const allTables = [...main.querySelectorAll('table')];
+    const showcaseTables = allTables.filter((t) => {
+      const firstCell = t.querySelector('tr:first-child td');
+      return firstCell && firstCell.textContent.includes('columns-showcase');
+    });
+    const signupTables = allTables.filter((t) => {
+      const firstCell = t.querySelector('tr:first-child td');
+      return firstCell && firstCell.textContent.includes('columns-signup');
+    });
+
+    // After first columns-showcase (Milk & Honey): add section-metadata pink + hr
+    if (showcaseTables[0]) {
+      const cells = [['Section Metadata'], ['style', 'pink']];
+      const table = WebImporter.DOMUtils.createTable(cells, document);
+      showcaseTables[0].after(table);
+      const hr = document.createElement('hr');
+      table.after(hr);
+    }
+
+    // After second columns-showcase (Coconut & Shea): add section-metadata blue + hr
+    if (showcaseTables[1]) {
+      const cells = [['Section Metadata'], ['style', 'blue']];
+      const table = WebImporter.DOMUtils.createTable(cells, document);
+      showcaseTables[1].after(table);
+      const hr = document.createElement('hr');
+      table.after(hr);
+    }
+
+    // After columns-signup (Mailing List): add section-metadata dark + hr
+    if (signupTables[0]) {
+      const cells = [['Section Metadata'], ['style', 'dark']];
+      const table = WebImporter.DOMUtils.createTable(cells, document);
+      signupTables[0].after(table);
+      const hr = document.createElement('hr');
+      table.after(hr);
+    }
 
     // 5. Apply WebImporter built-in rules
     const hr = document.createElement('hr');

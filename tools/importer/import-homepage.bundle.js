@@ -284,21 +284,45 @@ var CustomImportScript = (() => {
         }
       });
       executeTransformers("afterTransform", main, payload);
-      PAGE_TEMPLATE.sections.forEach((section) => {
-        if (section.style) {
-          const sectionEl = document.querySelector(section.selector);
-          if (sectionEl) {
-            const cells = [
-              ["Section Metadata"],
-              ["style", section.style]
-            ];
-            const table = WebImporter.DOMUtils.createTable(cells, document);
-            sectionEl.append(table);
-            const hr2 = document.createElement("hr");
-            sectionEl.after(hr2);
-          }
-        }
+      const blockTables = main.querySelectorAll("table");
+      const carouselTable = [...blockTables].find((t) => {
+        const firstCell = t.querySelector("tr:first-child td");
+        return firstCell && firstCell.textContent.includes("carousel-hero");
       });
+      if (carouselTable) {
+        const hr2 = document.createElement("hr");
+        carouselTable.after(hr2);
+      }
+      const allTables = [...main.querySelectorAll("table")];
+      const showcaseTables = allTables.filter((t) => {
+        const firstCell = t.querySelector("tr:first-child td");
+        return firstCell && firstCell.textContent.includes("columns-showcase");
+      });
+      const signupTables = allTables.filter((t) => {
+        const firstCell = t.querySelector("tr:first-child td");
+        return firstCell && firstCell.textContent.includes("columns-signup");
+      });
+      if (showcaseTables[0]) {
+        const cells = [["Section Metadata"], ["style", "pink"]];
+        const table = WebImporter.DOMUtils.createTable(cells, document);
+        showcaseTables[0].after(table);
+        const hr2 = document.createElement("hr");
+        table.after(hr2);
+      }
+      if (showcaseTables[1]) {
+        const cells = [["Section Metadata"], ["style", "blue"]];
+        const table = WebImporter.DOMUtils.createTable(cells, document);
+        showcaseTables[1].after(table);
+        const hr2 = document.createElement("hr");
+        table.after(hr2);
+      }
+      if (signupTables[0]) {
+        const cells = [["Section Metadata"], ["style", "dark"]];
+        const table = WebImporter.DOMUtils.createTable(cells, document);
+        signupTables[0].after(table);
+        const hr2 = document.createElement("hr");
+        table.after(hr2);
+      }
       const hr = document.createElement("hr");
       main.appendChild(hr);
       WebImporter.rules.createMetadata(main, document);
