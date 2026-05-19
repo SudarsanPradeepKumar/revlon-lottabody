@@ -1,0 +1,39 @@
+{
+  "variantName": "columns-showcase",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-05-19T22:14:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://lottabody.com/",
+    "originPage": "homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "accent",
+    "density": "spacious",
+    "purpose": "product-showcase",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image | paragraph + CTA",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "product line showcase sections with product image and brief description",
+      "marketing callout sections with image + text + CTA on colored backgrounds",
+      "brand landing page product line introductions"
+    ],
+    "notSuitableFor": [
+      "product detail pages with extensive information",
+      "multi-image comparison layouts",
+      "text-heavy side-by-side content without images"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T22:14:00.000Z"
+  }
+}

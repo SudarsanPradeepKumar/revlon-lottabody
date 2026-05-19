@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://lottabody.com/",
+  "path": "index",
+  "timestamp": "2026-05-19T22:42:49.435Z",
+  "title": "Home - Lottabody",
+  "template": "homepage",
+  "blocks": [
+    "carousel-hero",
+    "columns-showcase",
+    "columns-showcase",
+    "columns-showcase",
+    "columns-showcase",
+    "columns-signup",
+    "columns-signup"
+  ]
+}

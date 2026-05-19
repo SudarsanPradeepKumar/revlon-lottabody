@@ -10,6 +10,9 @@ const H = { before: 'beforeTransform', after: 'afterTransform' };
 
 export default function transform(hookName, element, payload) {
   if (hookName === H.before) {
+    // Remove duplicate responsive hero sliders (tablet and mobile versions)
+    // Only the desktop #hero-slides is parsed; the others are duplicates
+    WebImporter.DOMUtils.remove(element, ['#hero-slides-tablet', '#hero-slides-mobile']);
     // Remove cookie consent banner (blocks content interaction)
     // Found: #onetrust-consent-sdk (line 510 of cleaned.html)
     WebImporter.DOMUtils.remove(element, ['#onetrust-consent-sdk']);

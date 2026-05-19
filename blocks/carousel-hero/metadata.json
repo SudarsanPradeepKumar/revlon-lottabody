@@ -1,0 +1,39 @@
+{
+  "variantName": "carousel-hero",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-05-19T22:14:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://lottabody.com/",
+    "originPage": "homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "hero-slider",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + optional CTA per slide",
+    "buttonCount": 6,
+    "imageCount": 7
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "homepage hero sliders with full-bleed product/promotional images",
+      "landing pages with rotating banner images and CTAs",
+      "brand pages with multiple product line showcase slides"
+    ],
+    "notSuitableFor": [
+      "product detail image galleries",
+      "testimonial carousels with text-heavy content",
+      "small inline content carousels"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T22:14:00.000Z"
+  }
+}

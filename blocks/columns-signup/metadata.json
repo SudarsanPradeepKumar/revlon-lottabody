@@ -1,0 +1,39 @@
+{
+  "variantName": "columns-signup",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-05-19T22:14:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://lottabody.com/",
+    "originPage": "homepage",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "email-signup",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "form fields + submit | model image",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "email signup sections with form and supporting imagery",
+      "newsletter subscription layouts with form + decorative image",
+      "contact or lead generation sections on dark backgrounds"
+    ],
+    "notSuitableFor": [
+      "product showcase layouts",
+      "text-heavy content sections",
+      "multi-item grid layouts"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T22:14:00.000Z"
+  }
+}

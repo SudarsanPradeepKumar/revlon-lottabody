@@ -114,7 +114,54 @@
         "https://lottabody.com/"
       ],
       "description": "Homepage with video hero, product line showcases, and email signup form",
-      "blocks": []
+      "blocks": [
+        {
+          "name": "carousel-hero",
+          "instances": ["#hero-slides .et_pb_slider"]
+        },
+        {
+          "name": "columns-showcase",
+          "instances": ["#milk-and-honey-callout .et_pb_row", "#ready-to-use .et_pb_row"]
+        },
+        {
+          "name": "columns-signup",
+          "instances": ["#mailing-list .et_pb_row"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-hero",
+          "name": "Hero Carousel",
+          "selector": "#hero-slides",
+          "style": null,
+          "blocks": ["carousel-hero"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-milk-honey",
+          "name": "Milk and Honey Callout",
+          "selector": "#milk-and-honey-callout",
+          "style": "pink",
+          "blocks": ["columns-showcase"],
+          "defaultContent": ["#milk-and-honey-callout h3"]
+        },
+        {
+          "id": "section-ready-to-use",
+          "name": "Coconut and Shea Oils",
+          "selector": "#ready-to-use",
+          "style": "blue",
+          "blocks": ["columns-showcase"],
+          "defaultContent": ["#ready-to-use h3"]
+        },
+        {
+          "id": "section-mailing-list",
+          "name": "Mailing List Signup",
+          "selector": "#mailing-list",
+          "style": "dark",
+          "blocks": ["columns-signup"],
+          "defaultContent": ["#mailing-list .et_pb_text_0"]
+        }
+      ]
     },
     {
       "name": "product-line-landing",
