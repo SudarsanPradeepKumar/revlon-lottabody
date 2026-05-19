@@ -7,8 +7,9 @@
  * Source: https://lottabody.com/
  * Selector: #hero-slides .et_pb_slider
  *
- * Slides use CSS background-image (not <img> tags).
- * Extracts background-image URL from inline style and creates img elements.
+ * Each slide has a background-image and an optional CTA link.
+ * The image is wrapped in the CTA link to make the entire slide clickable.
+ * Output: single-column carousel with one linked image per row.
  */
 export default function parse(element, { document }) {
   const slides = element.querySelectorAll('.et_pb_slide');
@@ -17,7 +18,6 @@ export default function parse(element, { document }) {
   const cells = [];
 
   slides.forEach((slide) => {
-    // Extract background-image URL from inline style or computed style
     let bgUrl = '';
     const bgStyle = slide.style.backgroundImage || '';
     const match = bgStyle.match(/url\(["']?(.*?)["']?\)/);
@@ -25,19 +25,24 @@ export default function parse(element, { document }) {
       bgUrl = match[1];
     }
 
-    // Create an img element from the background-image URL
-    let imageCell = '';
-    if (bgUrl) {
-      const img = document.createElement('img');
-      img.src = bgUrl;
-      imageCell = img;
+    if (!bgUrl) return;
+
+    const img = document.createElement('img');
+    img.src = bgUrl;
+
+    // Wrap image in the CTA link so the entire slide is clickable
+    const ctaLink = slide.querySelector('.et_pb_slide_description a.et_pb_button, .et_pb_button');
+    let cell;
+    if (ctaLink) {
+      const link = document.createElement('a');
+      link.href = ctaLink.href;
+      link.append(img);
+      cell = link;
+    } else {
+      cell = img;
     }
 
-    // Extract optional CTA button link
-    const ctaLink = slide.querySelector('.et_pb_slide_description a.et_pb_button, .et_pb_button');
-    const ctaCell = ctaLink || '';
-
-    cells.push([imageCell, ctaCell]);
+    cells.push([cell]);
   });
 
   if (cells.length === 0) return;
