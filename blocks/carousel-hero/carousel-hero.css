@@ -44,32 +44,18 @@
 .carousel-hero .carousel-hero-slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
   position: relative;
   width: 100%;
-  min-height: min(50vw, calc(100dvh - var(--header-height)));
-}
-
-.carousel-hero .carousel-hero-slide:has(.carousel-hero-slide-content[data-align='center']) {
-  align-items: center;
-}
-
-.carousel-hero .carousel-hero-slide:has(.carousel-hero-slide-content[data-align='right']) {
-  align-items: flex-end;
 }
 
 .carousel-hero .carousel-hero-slide .carousel-hero-slide-image picture {
-  position: absolute;
-  inset: 0;
+  display: block;
 }
 
 .carousel-hero .carousel-hero-slide .carousel-hero-slide-image picture > img {
-  height: 100%;
+  display: block;
   width: 100%;
-  object-fit: cover;
+  height: auto;
 }
 
 .carousel-hero .carousel-hero-slide .carousel-hero-slide-content {
