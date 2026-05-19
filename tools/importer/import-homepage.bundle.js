@@ -57,16 +57,14 @@ var CustomImportScript = (() => {
       const img = document.createElement("img");
       img.src = bgUrl;
       const ctaLink = slide.querySelector(".et_pb_slide_description a.et_pb_button, .et_pb_button");
-      let cell;
+      let linkCell = "";
       if (ctaLink) {
         const link = document.createElement("a");
         link.href = ctaLink.href;
-        link.append(img);
-        cell = link;
-      } else {
-        cell = img;
+        link.textContent = ctaLink.href;
+        linkCell = link;
       }
-      cells.push([cell]);
+      cells.push([img, linkCell]);
     });
     if (cells.length === 0) return;
     const block = WebImporter.Blocks.createBlock(document, { name: "carousel-hero", cells });

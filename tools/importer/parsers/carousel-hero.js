@@ -7,9 +7,8 @@
  * Source: https://lottabody.com/
  * Selector: #hero-slides .et_pb_slider
  *
- * Each slide has a background-image and an optional CTA link.
- * The image is wrapped in the CTA link to make the entire slide clickable.
- * Output: single-column carousel with one linked image per row.
+ * Output: 2-column rows — col1: slide image, col2: link URL (or empty if no link)
+ * The block JS reads the URL from col2 and makes the entire image clickable.
  */
 export default function parse(element, { document }) {
   const slides = element.querySelectorAll('.et_pb_slide');
@@ -30,19 +29,17 @@ export default function parse(element, { document }) {
     const img = document.createElement('img');
     img.src = bgUrl;
 
-    // Wrap image in the CTA link so the entire slide is clickable
+    // Extract CTA link URL for column 2
     const ctaLink = slide.querySelector('.et_pb_slide_description a.et_pb_button, .et_pb_button');
-    let cell;
+    let linkCell = '';
     if (ctaLink) {
       const link = document.createElement('a');
       link.href = ctaLink.href;
-      link.append(img);
-      cell = link;
-    } else {
-      cell = img;
+      link.textContent = ctaLink.href;
+      linkCell = link;
     }
 
-    cells.push([cell]);
+    cells.push([img, linkCell]);
   });
 
   if (cells.length === 0) return;

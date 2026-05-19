@@ -74,14 +74,28 @@ function createSlide(row, slideIndex, carouselId) {
   slide.setAttribute('id', `carousel-hero-${carouselId}-slide-${slideIndex}`);
   slide.classList.add('carousel-hero-slide');
 
-  row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
-    column.classList.add(`carousel-hero-slide-${colIdx === 0 ? 'image' : 'content'}`);
-    slide.append(column);
-  });
+  const columns = row.querySelectorAll(':scope > div');
+  const imageCol = columns[0];
+  const linkCol = columns[1];
 
-  const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
-  if (labeledBy) {
-    slide.setAttribute('aria-labelledby', labeledBy.getAttribute('id'));
+  // Read link URL from column 2 and wrap the image to make entire slide clickable
+  const linkEl = linkCol ? linkCol.querySelector('a') : null;
+  const picture = imageCol ? imageCol.querySelector('picture') : null;
+
+  if (picture && linkEl) {
+    const wrapper = document.createElement('a');
+    wrapper.href = linkEl.href;
+    wrapper.classList.add('carousel-hero-slide-link');
+    wrapper.append(picture);
+    slide.append(wrapper);
+  } else if (picture) {
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('carousel-hero-slide-image');
+    wrapper.append(picture);
+    slide.append(wrapper);
+  } else if (imageCol) {
+    imageCol.classList.add('carousel-hero-slide-image');
+    slide.append(imageCol);
   }
 
   return slide;

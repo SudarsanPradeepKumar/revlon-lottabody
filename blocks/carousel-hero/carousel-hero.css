@@ -48,48 +48,21 @@
   width: 100%;
 }
 
-.carousel-hero .carousel-hero-slide .carousel-hero-slide-image picture {
+.carousel-hero .carousel-hero-slide .carousel-hero-slide-image,
+.carousel-hero .carousel-hero-slide .carousel-hero-slide-link {
   display: block;
 }
 
-.carousel-hero .carousel-hero-slide .carousel-hero-slide-image picture > img {
+.carousel-hero .carousel-hero-slide picture {
+  display: block;
+}
+
+.carousel-hero .carousel-hero-slide picture > img {
   display: block;
   width: 100%;
   height: auto;
 }
 
-.carousel-hero .carousel-hero-slide .carousel-hero-slide-content {
-  z-index: 1;
-  position: absolute;
-  bottom: 40px;
-  right: 40px;
-  padding: 0;
-  color: white;
-  background-color: transparent;
-  width: auto;
-}
-
-.carousel-hero .carousel-hero-slide .carousel-hero-slide-content p {
-  margin: 0;
-}
-
-.carousel-hero .carousel-hero-slide .carousel-hero-slide-content a {
-  display: inline-block;
-  padding: 10px 30px;
-  border: 1px solid #d5a6cc;
-  border-radius: 10px;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 500;
-  font-family: var(--body-font-family);
-  text-decoration: none;
-  transition: background-color 0.2s, border-color 0.2s;
-}
-
-.carousel-hero .carousel-hero-slide .carousel-hero-slide-content a:hover {
-  background-color: #d5a6cc;
-  border-color: #d5a6cc;
-}
 
 .carousel-hero .carousel-hero-slide-indicators {
   display: flex;
