@@ -75,43 +75,94 @@ var CustomImportScript = (() => {
   function parse2(element, { document }) {
     const columns = element.querySelectorAll(":scope > .et_pb_column");
     if (!columns || columns.length < 2) {
+      element.remove();
       return;
     }
-    const cells = [];
-    const row = [];
-    for (const column of columns) {
-      const cellContent = [];
-      const imageModule = column.querySelector(".et_pb_image");
-      if (imageModule) {
-        const link = imageModule.querySelector("a");
-        const img = imageModule.querySelector("img");
-        if (link && img) {
-          const anchor = link.cloneNode(false);
-          anchor.textContent = "";
-          const imgClone = img.cloneNode(false);
-          anchor.appendChild(imgClone);
-          cellContent.push(anchor);
-        } else if (img) {
-          cellContent.push(img.cloneNode(false));
-        }
+    const section = element.closest(".et_pb_section");
+    let bgCell = "";
+    if (section) {
+      const bgStyle = section.style.backgroundImage || "";
+      const bgMatch = bgStyle.match(/url\(["']?(.*?)["']?\)/);
+      if (bgMatch && bgMatch[1]) {
+        const img = document.createElement("img");
+        img.src = bgMatch[1];
+        bgCell = img;
       }
-      const textModule = column.querySelector(".et_pb_text");
-      if (textModule) {
-        const textInner = textModule.querySelector(".et_pb_text_inner");
-        if (textInner) {
-          const paragraph = textInner.querySelector("p");
-          if (paragraph) {
-            cellContent.push(paragraph.cloneNode(true));
-          }
-          const ctaLink = textInner.querySelector("a");
-          if (ctaLink) {
-            cellContent.push(ctaLink.cloneNode(true));
-          }
-        }
-      }
-      row.push(cellContent);
     }
-    cells.push(row);
+    let titleCell = "";
+    if (section) {
+      const sectionHeading = section.querySelector(".et_pb_row h3, .et_pb_row h2");
+      if (sectionHeading) {
+        const h3 = document.createElement("h3");
+        h3.textContent = sectionHeading.textContent.trim();
+        titleCell = h3;
+      }
+    }
+    const col0HasImg = columns[0].querySelector(".et_pb_image");
+    const col1HasImg = columns[1].querySelector(".et_pb_image");
+    let productImgEl = "";
+    let rightCell = [];
+    if (col0HasImg) {
+      const link = columns[0].querySelector("a");
+      const img = columns[0].querySelector("img");
+      if (link && img) {
+        const a = document.createElement("a");
+        a.href = link.href;
+        const newImg = document.createElement("img");
+        newImg.src = img.src;
+        newImg.alt = img.alt || "";
+        a.append(newImg);
+        productImgEl = a;
+      } else if (img) {
+        productImgEl = img.cloneNode(false);
+      }
+      const textInner = columns[1].querySelector(".et_pb_text_inner");
+      if (textInner) {
+        const p = textInner.querySelector("p");
+        if (p) rightCell.push(p.cloneNode(true));
+        const cta = textInner.querySelector("a");
+        if (cta) {
+          const pp = document.createElement("p");
+          const a = document.createElement("a");
+          a.href = cta.href;
+          a.textContent = cta.textContent;
+          pp.append(a);
+          rightCell.push(pp);
+        }
+      }
+    } else if (col1HasImg) {
+      const link = columns[1].querySelector("a");
+      const img = columns[1].querySelector("img");
+      if (link && img) {
+        const a = document.createElement("a");
+        a.href = link.href;
+        const newImg = document.createElement("img");
+        newImg.src = img.src;
+        newImg.alt = img.alt || "";
+        a.append(newImg);
+        productImgEl = a;
+      } else if (img) {
+        productImgEl = img.cloneNode(false);
+      }
+      const textInner = columns[0].querySelector(".et_pb_text_inner");
+      if (textInner) {
+        const p = textInner.querySelector("p");
+        if (p) rightCell.push(p.cloneNode(true));
+        const cta = textInner.querySelector("a");
+        if (cta) {
+          const pp = document.createElement("p");
+          const a = document.createElement("a");
+          a.href = cta.href;
+          a.textContent = cta.textContent;
+          pp.append(a);
+          rightCell.push(pp);
+        }
+      }
+    }
+    const cells = [];
+    if (bgCell) cells.push([bgCell]);
+    if (titleCell) cells.push([titleCell]);
+    cells.push([productImgEl, rightCell]);
     const block = WebImporter.Blocks.createBlock(document, { name: "columns-showcase", cells });
     element.replaceWith(block);
   }
