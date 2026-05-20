@@ -1,5 +1,4 @@
 import { getMetadata } from '../../scripts/aem.js';
-import { loadFragment } from '../fragment/fragment.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -116,7 +115,15 @@ export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
-  const fragment = await loadFragment(navPath);
+  const resp = await fetch(`${navPath}.plain.html`);
+  if (!resp.ok) return;
+  const html = await resp.text();
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+  const fragment = document.createElement('div');
+  doc.body.querySelectorAll(':scope > div').forEach((div) => {
+    fragment.append(div);
+  });
 
   // decorate nav DOM
   block.textContent = '';
